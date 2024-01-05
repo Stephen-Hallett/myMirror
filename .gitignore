@@ -1,0 +1,16 @@
+/mirror_react/.pnp
+/mirror_react/.pnp.js
+/mirror_react/coverage
+/mirror_react/build
+/mirror_react/.DS_Store
+/mirror_react/.env.local
+/mirror_react/.env.development.local
+/mirror_react/.env.test.local
+/mirror_react/.env.production.local
+/mirror_react/core
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+config.js
+node_modules

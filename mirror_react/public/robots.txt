@@ -1,0 +1,6 @@
+# https://www.robotstxt.org/robotstxt.html
+
+beep boop - what are you doing looking at the robots.txt file this is an electron app - beep boop
+
+User-agent: *
+Disallow:
