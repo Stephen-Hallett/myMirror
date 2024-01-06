@@ -1,3 +1,4 @@
+
 /mirror_react/.pnp
 /mirror_react/.pnp.js
 /mirror_react/coverage
@@ -14,3 +15,5 @@ yarn-debug.log*
 yarn-error.log*
 config.js
 node_modules
+.env
+
