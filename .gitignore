@@ -9,7 +9,7 @@
 /mirror_react/.env.test.local
 /mirror_react/.env.production.local
 /mirror_react/core
-
+/finances/*.sh
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
