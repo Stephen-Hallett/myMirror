@@ -12,12 +12,15 @@ const getPortfolio = (callback) => {
         portfolio.push(newRow);
     })
     .on("end", () => {
-        const today_value = portfolio[portfolio.length - 1];
+        const today_value = portfolio[portfolio.length - 1]["total"];
+        const change = ((parseInt(today_value,10) / parseInt(portfolio[portfolio.length - 2]["total"],10)) - 1).toFixed(1)
         console.log(portfolio);
         callback(undefined, {
             mostRecent: today_value,
+            change: change,
             portfolio: portfolio,
         });
     });
 };
 
+module.exports = {getPortfolio};

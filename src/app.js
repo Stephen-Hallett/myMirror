@@ -102,12 +102,13 @@ app.get("/strava", (req, res) => {
 })
 
 app.get("/finances", (req,res) => {
-    finances.getPortfolio((error, {mostRecent, portfolio}) => {
+    finances.getPortfolio((error, {mostRecent, change, portfolio}) => {
         if (error){
             console.log("FINANCES ERROR");
         } else {
             res.send({
                 mostRecent,
+                change,
                 portfolio
             });
         }

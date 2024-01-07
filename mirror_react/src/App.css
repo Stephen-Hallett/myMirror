@@ -25,23 +25,47 @@ body{
     height:100vh;
 }
 
-.widget{
-    width:450px;
-    height:300px;
-    padding-top:2%;
-    margin-top: 20px;
+.left-align, .right-align{
+    flex-shrink: 0;
+    flex-grow:0;
 }
 
 .right-align{
-    position: absolute;
     right: 2%;
     align-self: right;
     float: right;
+    display:flex;
+    flex-direction: column;
+    width:400px;
+    height:100%;
+}
+
+.center-align{
+    position: relative;
+    display:flex;
+    align-content: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.left-align{
+    padding-left: 2%;
+    display:flex;
+    flex-direction: column;
+    float:left;
+    width:450px;
+}
+
+.top-align{
+    padding-top:2%;
 }
 
 .top-align, .bottom-align{
     height:30%;
     position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .top-middle-align{
@@ -52,12 +76,6 @@ body{
 .bottom-middle-align{
     height:5%;
     position: relative;
-}
-
-.left-align{
-    padding-left: 2%;
-    display:inline-block;
-    float:left;
 }
 
 .inlineWrapper{
@@ -133,6 +151,21 @@ body{
 
 .temp{
     font-size: 80%;
+}
+
+.portfolioTotal {
+    font-weight:bold;
+    font-size: 125%;
+    margin-right: 10px;
+}
+
+.portfolioChange{
+    padding-left:4px;
+    padding-top:4px;
+}
+
+.changeIcon{
+    padding-top:6px;
 }
 
 .time{

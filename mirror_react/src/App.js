@@ -4,6 +4,7 @@ import WeatherForecastApp from './WeatherForecastApp';
 import DatetimeApp from './datetime';
 import ComplimentsApp from './Compliments';
 import StravaApp from './Strava';
+import PortfolioTotalApp from './portfolioTotal';
 import React, {useEffect, useState} from "react";
 import ReactDOM from 'react-dom';
 
@@ -15,6 +16,9 @@ function App() {
   const [time, setTime] = useState("");
   const [compliment, setCompliment] = useState("");
   const [stravaData, setStravadata] = useState([]);
+  const [portfolioTotal, setPortfolioTotal] = useState("");
+  const [portfolioChange, setPortfolioChange] = useState("");
+  const [portfolioHistory, setPortfolioHistory] = useState([]);
 
   const baseURL = "http://localhost:3080"
 
@@ -97,6 +101,23 @@ useEffect(() => {
   return() => clearInterval(interval)
 }, []);
 
+useEffect(() => {
+  const fetchPortfolioData = async () => { 
+    const portfolioURL = baseURL+"/finances"
+
+      await fetch(portfolioURL)
+      .then(res => res.json())
+      .then(result => {
+        setPortfolioTotal(result.mostRecent);
+        setPortfolioChange(result.change);
+        setPortfolioHistory(result.portfolio);
+      //console.log(result);
+      });
+  }
+  const interval = setInterval(() => {fetchPortfolioData()}, 60000);
+  return() => clearInterval(interval)
+}, []);
+
   //console.log(weatherData);
   //console.log(forecastData);
   //console.log(compliment);
@@ -106,24 +127,23 @@ useEffect(() => {
     <div className="App">
       <div className="top-align">
         <div className="left-align">
-          <div className="widget">
-            {(!(Array.isArray(weatherData)) && !(weatherData.error)) ? (
-              <WeatherApp weatherData={weatherData} hour={hour}/>
-            ): (
-              <div></div>
-            )}
+          {(!(Array.isArray(weatherData)) && !(weatherData.error)) ? (
+            <WeatherApp weatherData={weatherData} hour={hour}/>
+          ): (
+            <div></div>
+          )}
 
-            {(!(Array.isArray(weatherData)) && !(Array.isArray(forecastData)) && !(weatherData.error) && !(forecastData.error)) ? (
-              <WeatherForecastApp hour={hour} forecastData={forecastData}/>
-            ): (
-              <div></div>
-            )}
-          </div>
+          {(!(Array.isArray(weatherData)) && !(Array.isArray(forecastData)) && !(weatherData.error) && !(forecastData.error)) ? (
+            <WeatherForecastApp hour={hour} forecastData={forecastData}/>
+          ): (
+            <div></div>
+          )}
+        </div>
+        <div className="center-align">
+          <PortfolioTotalApp mostRecent={portfolioTotal} change={portfolioChange}/>
         </div>
         <div className="right-align">
-          <div className="widget">
-              <DatetimeApp date={date} time={time}/>
-          </div>
+          <DatetimeApp date={date} time={time}/>
         </div>
       </div>
       <div className="top-middle-align"></div>
