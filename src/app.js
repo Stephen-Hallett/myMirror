@@ -1,36 +1,37 @@
-const express = require('express');
-const req = require('express/lib/request');
-const weather = require('../weatherData');
+const express = require("express");
+const req = require("express/lib/request");
+const weather = require("../weatherData");
 const compliments =  require("../compliments");
-const hbs = require('hbs');
-const path = require('path');
-const constants = require('../config');
-const datetime = require('../datetime');
-const cors = require('cors');
-const strava = require('../strava');
+const hbs = require("hbs");
+const path = require("path");
+const constants = require("../config");
+const datetime = require("../datetime");
+const cors = require("cors");
+const strava = require("../strava");
+const finances = require("../finances")
 
 const app = express();
 
 const port = process.env.PORT || 3080;
 
-const publicStaticDirPath = path.join(__dirname, '../public');
-const viewsPath = path.join(__dirname, '../templates/views');
+const publicStaticDirPath = path.join(__dirname, "../public");
+const viewsPath = path.join(__dirname, "../templates/views");
 
-app.set('view engine', 'hbs');
-app.set('views', viewsPath);
+app.set("view engine", "hbs");
+app.set("views", viewsPath);
 
 app.use(cors());
 app.use(express.static(publicStaticDirPath));
 
 
-app.get('/', (req,res) =>{
-    res.render('index', {
-        title: 'MyMirror',
+app.get("/", (req,res) =>{
+    res.render("index", {
+        title: "MyMirror",
         city: constants.Area.CITY
     })
 })
 
-app.get('/weather', (req,res) => {
+app.get("/weather", (req,res) => {
     weather.weatherData((error, {temperature, description, humidity,icon, windSpeed}) =>{
         if(error){
             return res.send({error});
@@ -46,7 +47,7 @@ app.get('/weather', (req,res) => {
     })
 });
 
-app.get('/weatherForecast', (req,res) =>{
+app.get("/weatherForecast", (req,res) =>{
     weather.weatherForecast((error, {hour1, hour2, hour3, hour4, hour5, hour6}) =>{
         console.log(error, {hour1, hour2, hour3, hour4, hour5, hour6})
         if(error){
@@ -64,7 +65,7 @@ app.get('/weatherForecast', (req,res) =>{
     });
 });
 
-app.get('/datetime', (req,res) => {
+app.get("/datetime", (req,res) => {
     datetime.getDatetime((error, {date, time}) => {
         if (error){
             console.log("ERROR OCCURED GETTING DATETIME")
@@ -100,7 +101,19 @@ app.get("/strava", (req, res) => {
     })
 })
 
+app.get("/finances", (req,res) => {
+    finances.getPortfolio((error, {mostRecent, portfolio}) => {
+        if (error){
+            console.log("FINANCES ERROR");
+        } else {
+            res.send({
+                mostRecent,
+                portfolio
+            });
+        }
+    })
+})
 
 app.listen(port, () => {
-    console.log('Server is up and running');
+    console.log("Server is up and running");
 })
