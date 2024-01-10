@@ -21,8 +21,8 @@ def main() -> None:
                         columns="institution",
                         values="value")
     portfolio = portfolio.fillna(method="ffill")
-    print(portfolio)
     portfolio["total"] = portfolio.sum(axis=1).apply(lambda x: round(x))
+    print(portfolio)
     portfolio.to_csv(os.path.join(path, "portfolio.csv"))
 
 if __name__ == "__main__":
