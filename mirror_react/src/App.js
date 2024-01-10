@@ -114,7 +114,7 @@ useEffect(() => {
       //console.log(result);
       });
   }
-  const interval = setInterval(() => {fetchPortfolioData()}, 60000);
+  const interval = setInterval(() => {fetchPortfolioData()}, 1000);
   return() => clearInterval(interval)
 }, []);
 
