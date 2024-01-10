@@ -49,7 +49,6 @@ body{
 }
 
 .left-align{
-    padding-left: 2%;
     display:flex;
     flex-direction: column;
     float:left;
