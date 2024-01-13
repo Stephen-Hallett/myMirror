@@ -2,7 +2,6 @@ import React from 'react'
 
 const PortfolioTotalApp = ({mostRecent, change}) => {
     let num = parseInt(mostRecent, 10)
-    console.log(change);
     return(
         <>
             <div className="portfolioTotal">${num.toLocaleString()}</div>
