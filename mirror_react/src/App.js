@@ -7,6 +7,7 @@ import StravaApp from './Strava';
 import PortfolioTotalApp from './portfolioTotal';
 import React, {useEffect, useState} from "react";
 import ReactDOM from 'react-dom';
+import CaloriesApp from './Calories';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   const [portfolioTotal, setPortfolioTotal] = useState("");
   const [portfolioChange, setPortfolioChange] = useState("");
   const [portfolioHistory, setPortfolioHistory] = useState([]);
+  const [calories, setCalories] = useState(0);
 
   const baseURL = "http://localhost:3080"
 
@@ -118,6 +120,21 @@ useEffect(() => {
   return() => clearInterval(interval)
 }, []);
 
+useEffect(() => {
+  const fetchCalories = async () => {
+    const caloriesURL = baseURL + "/calories"
+
+    await fetch(caloriesURL)
+    .then(res => res.json())
+    .then(result => {
+      setCalories(result.calories);
+    });
+  }
+  const interval = setInterval(() => {fetchCalories()}, 10000);
+  return() => clearInterval(interval)
+
+}, []);
+
   //console.log(weatherData);
   //console.log(forecastData);
   //console.log(compliment);
@@ -154,12 +171,17 @@ useEffect(() => {
           <div></div>
         )}
       </div>
-      <div className="bottom-left-align">
-          {(!(Array.isArray(stravaData)) && !(stravaData.error)) ? (
-              <StravaApp stravaData={stravaData}/>
-            ): (
-              <div></div>
-            )}
+      <div className="bottom-align">
+        <div className="bottom-left-align">
+            {(!(Array.isArray(stravaData)) && !(stravaData.error)) ? (
+                <StravaApp stravaData={stravaData}/>
+              ): (
+                <div></div>
+              )}
+        </div>
+        <div className="bottom-right-align">
+          <CaloriesApp calories={calories}/>
+        </div>
       </div>
     </div>
   );

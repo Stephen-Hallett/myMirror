@@ -9,6 +9,7 @@ const datetime = require("../datetime");
 const cors = require("cors");
 const strava = require("../strava");
 const finances = require("../finances")
+const calories = require("../calories")
 
 const app = express();
 
@@ -111,6 +112,17 @@ app.get("/finances", (req,res) => {
                 change,
                 portfolio
             });
+        }
+    })
+})
+
+app.get("/calories", (req, res) => {
+    calories.getCalories((error, {calories}) => {
+        if (error){
+            console.log("CALORIES ERROR");
+        } else{
+            console.log(calories)
+            res.send({ calories });
         }
     })
 })
