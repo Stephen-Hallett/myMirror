@@ -213,7 +213,7 @@ body{
 }
 
 .numbers {
-    width:75%;
+    width:67%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -221,7 +221,7 @@ body{
 }
 
 .icons {
-    width: 25%;
+    width: 33%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -268,7 +268,7 @@ body{
 }
 
 .calorieIcon{
-    width:15%;
+    width:10%;
     font-size:175%;
     text-align: center;
     padding-top:4px;
