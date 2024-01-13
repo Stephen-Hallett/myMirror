@@ -202,16 +202,18 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    width:25%;
 }
 
 .bottom-right-align{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    width:25%;
 }
 
 .numbers {
-    width:65%;
+    width:75%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -219,7 +221,7 @@ body{
 }
 
 .icons {
-    width: 35%;
+    width: 25%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -254,10 +256,23 @@ body{
 .ytd_run{
     float:left;
 }
+.calorieContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
 
 .calories{
     font-size:175%;
     font-weight:bold;
+}
+
+.calorieIcon{
+    width:15%;
+    font-size:175%;
+    text-align: center;
+    padding-top:4px;
+    padding-right: 10px;
 }
 
 ::-webkit-scrollbar {
