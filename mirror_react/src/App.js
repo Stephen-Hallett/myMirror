@@ -18,7 +18,6 @@ function App() {
   const [stravaData, setStravadata] = useState([]);
   const [portfolioTotal, setPortfolioTotal] = useState("");
   const [portfolioChange, setPortfolioChange] = useState("");
-  const [portfolioHistory, setPortfolioHistory] = useState([]);
   const [calories, setCalories] = useState(0);
 
   const baseURL = "http://localhost:3080";
@@ -112,14 +111,13 @@ function App() {
 
   useEffect(() => {
     const fetchPortfolioData = async () => {
-      const portfolioURL = baseURL + "/finances";
+      const portfolioURL = "http://100.74.152.81:8181/portfolio";
 
       await fetch(portfolioURL)
         .then((res) => res.json())
         .then((result) => {
-          setPortfolioTotal(result.mostRecent);
-          setPortfolioChange(result.change);
-          setPortfolioHistory(result.portfolio);
+          setPortfolioTotal(result.total);
+          setPortfolioChange(result.pct_change);
           //console.log(result);
         });
     };
@@ -141,7 +139,7 @@ function App() {
     };
     const interval = setInterval(() => {
       fetchCalories();
-    }, 10000);
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
