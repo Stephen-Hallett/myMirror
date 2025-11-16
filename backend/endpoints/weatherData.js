@@ -47,7 +47,8 @@ const weatherForecast = (callback) => {
     `&units=` +
     constants.OpenWeatherMap.UNITS +
     `&exclude=` +
-    constants.OpenWeatherMap.EXCLUDE;
+    constants.OpenWeatherMap.EXCLUDE +
+    `&cnt=6`;
   console.log(url);
   request({ url, json: true }, (error, { body }) => {
     //console.log(body)
@@ -75,26 +76,61 @@ const weatherForecast = (callback) => {
         hour1: [
           body.list[0].main.temp,
           "i" + body.list[0].weather[0].icon.slice(0, -1),
+          +new Date(body.list[0].dt * 1000).toLocaleString("en-US", {
+            timeZone: "Pacific/Auckland",
+            hour: "2-digit",
+            hour12: false,
+          }),
         ],
         hour2: [
           body.list[1].main.temp,
           "i" + body.list[1].weather[0].icon.slice(0, -1),
+          +new Date(body.list[1].dt * 1000).toLocaleString("en-US", {
+            timeZone: "Pacific/Auckland",
+            hour: "2-digit",
+            hour12: false,
+          }),
+          ,
         ],
         hour3: [
           body.list[2].main.temp,
           "i" + body.list[2].weather[0].icon.slice(0, -1),
+          +new Date(body.list[2].dt * 1000).toLocaleString("en-US", {
+            timeZone: "Pacific/Auckland",
+            hour: "2-digit",
+            hour12: false,
+          }),
+          ,
         ],
         hour4: [
           body.list[3].main.temp,
           "i" + body.list[3].weather[0].icon.slice(0, -1),
+          +new Date(body.list[3].dt * 1000).toLocaleString("en-US", {
+            timeZone: "Pacific/Auckland",
+            hour: "2-digit",
+            hour12: false,
+          }),
+          ,
         ],
         hour5: [
           body.list[4].main.temp,
           "i" + body.list[4].weather[0].icon.slice(0, -1),
+          +new Date(body.list[4].dt * 1000).toLocaleString("en-US", {
+            timeZone: "Pacific/Auckland",
+            hour: "2-digit",
+            hour12: false,
+          }),
+          ,
         ],
         hour6: [
           body.list[5].main.temp,
           "i" + body.list[5].weather[0].icon.slice(0, -1),
+          +new Date(body.list[5].dt * 1000).toLocaleString("en-US", {
+            timeZone: "Pacific/Auckland",
+            hour: "2-digit",
+            hour12: false,
+          }),
+          ,
         ],
       });
     }

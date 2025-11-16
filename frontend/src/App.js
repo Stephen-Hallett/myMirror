@@ -161,7 +161,7 @@ function App() {
           !Array.isArray(forecastData) &&
           !weatherData.error &&
           !forecastData.error ? (
-            <WeatherForecastApp hour={hour} forecastData={forecastData} />
+            <WeatherForecastApp forecastData={forecastData} />
           ) : (
             <div></div>
           )}
