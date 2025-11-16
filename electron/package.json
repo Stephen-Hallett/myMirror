@@ -1,0 +1,16 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "description": "Electron app to open mirror webpage",
+  "main": "index.js",
+  "repository": "https://github.com/Stephen-Hallett/myMirror.git",
+  "author": "Stephen Hallett",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "electron": "^39.2.1"
+  },
+  "scripts": {
+    "start": "electron ."
+  }
+}
