@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Node JS API end points for myMirror",
+  "main": "index.js",
+  "repository": "https://github.com/Stephen-Hallett/myMirror.git",
+  "author": "Stephen Hallett",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "geo-tz": "^8.1.4",
+    "hbs": "^4.2.0",
+    "request": "^2.88.2"
+  }
+}

@@ -1,13 +1,13 @@
 const express = require("express");
 const req = require("express/lib/request");
-const weather = require("../weatherData");
-const compliments = require("../compliments");
+const weather = require("./endpoints/weatherData");
+const compliments = require("./endpoints/compliments");
 const hbs = require("hbs");
 const path = require("path");
-const constants = require("../config");
-const datetime = require("../datetime");
+const constants = require("./config");
+const datetime = require("./endpoints/datetime");
 const cors = require("cors");
-const strava = require("../strava");
+const strava = require("./endpoints/strava");
 
 const app = express();
 
