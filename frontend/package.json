@@ -1,8 +1,8 @@
 {
   "name": "mirror_react",
   "version": "0.1.0",
-  "private": true,
-  "main": "public/electron.js",
+  "private": false,
+  "main": "src/index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -48,5 +48,9 @@
   "devDependencies": {
     "concurrently": "^5.2.0",
     "wait-on": "^5.1.0"
-  }
+  },
+  "description": "myMirror react app",
+  "repository": "https://github.com/Stephen-Hallett/myMirror.git",
+  "author": "Stephen Hallett",
+  "license": "MIT"
 }

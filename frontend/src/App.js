@@ -1,13 +1,12 @@
 import "./App.css";
-import WeatherApp from "./WeatherApp";
-import WeatherForecastApp from "./WeatherForecastApp";
-import DatetimeApp from "./datetime";
-import ComplimentsApp from "./Compliments";
-import StravaApp from "./Strava";
-import PortfolioTotalApp from "./portfolioTotal";
+import WeatherApp from "./widgets/WeatherApp";
+import WeatherForecastApp from "./widgets/WeatherForecastApp";
+import DatetimeApp from "./widgets/datetime";
+import ComplimentsApp from "./widgets/Compliments";
+import StravaApp from "./widgets/Strava";
+import PortfolioTotalApp from "./widgets/portfolioTotal";
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import CaloriesApp from "./Calories";
+import CaloriesApp from "./widgets/Calories";
 
 function App() {
   const [weatherData, setWeatherdata] = useState([]);
