@@ -8,11 +8,11 @@ const commands = [
   },
   {
     name: "React Server",
-    command: "cd ./mirror_react && react-scripts start",
+    command: "cd ./frontend && react-scripts start",
   },
   {
     name: "Electron server",
-    command: "cd ./mirror_react && electron .",
+    command: "cd ./electron && electron .",
   },
 ];
 
