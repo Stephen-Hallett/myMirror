@@ -24,7 +24,7 @@ jobs:
         run: |
           ssh -o "StrictHostKeyChecking no" ${{ secrets.VPS_USER }}@mymirror "
             cd /home/stephen/myMirror \
-            && echo """${{ secrets.CONFIG }}""" > /home/stephen/myMirror/backend/config.json \
+            && echo """${{ secrets.CONFIG }}""" > /home/stephen/myMirror/backend/config.js \
             && git pull \
             && docker compose up -d --build
           "
