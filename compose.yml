@@ -1,0 +1,49 @@
+name: myMirror
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend_api
+    environment:
+      place: holder
+
+    ports:
+      - "3080:3080"
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:3080/health || exit 1" ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    networks:
+      - mirror_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      place: holder
+
+    ports:
+      - "3000:3000"
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -fsS http://localhost:3000/ -o /dev/null || exit 1" ]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    networks:
+      - mirror_network
+
+networks:
+  mirror_network:
+    driver: bridge
