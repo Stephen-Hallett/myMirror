@@ -22,12 +22,9 @@ jobs:
 
       - name: Redeploy App
         run: |
-          ssh -o "StrictHostKeyChecking no" ${{ secrets.VPS_USER }}@mymirror << 'EOF'
-            cd /home/stephen/myMirror
-            cat > /home/stephen/myMirror/backend/config.js << 'CONFIG'
-            ${{ secrets.CONFIG }}
-            CONFIG
-            git pull
-            docker compose up -d --build
-            docker ps
-          EOF
+          ssh -o "StrictHostKeyChecking no" ${{ secrets.VPS_USER }}@mymirror "
+            cd /home/stephen/myMirror \
+            && git pull \
+            && printf \"%s\" \"${{ secrets.CONFIG }}\" > /home/stephen/myMirror/backend/config.js \
+            && docker compose up -d --build
+          "
