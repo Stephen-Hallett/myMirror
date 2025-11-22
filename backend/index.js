@@ -22,11 +22,8 @@ app.set("views", viewsPath);
 app.use(cors());
 app.use(express.static(publicStaticDirPath));
 
-app.get("/", (req, res) => {
-  res.render("index", {
-    title: "MyMirror",
-    city: constants.Area.CITY,
-  });
+app.get("/health", (req, res) => {
+  res.send({ status: "healthy" });
 });
 
 app.get("/weather", (req, res) => {
