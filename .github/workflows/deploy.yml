@@ -25,5 +25,6 @@ jobs:
           ssh -o "StrictHostKeyChecking no" ${{ secrets.VPS_USER }}@mymirror "
             cd /home/stephen/myMirror \
             && git pull \
-            && docker compose up -d --build
+            && docker compose up -d --build \
+            && sudo reboot -h now
           "
