@@ -7,6 +7,7 @@ import StravaApp from "./widgets/Strava";
 import PortfolioTotalApp from "./widgets/portfolioTotal";
 import React, { useEffect, useState } from "react";
 import CaloriesApp from "./widgets/Calories";
+import DailyTrackerApp from "./widgets/DailyTracker";
 
 function App() {
   const [weatherData, setWeatherdata] = useState([]);
@@ -18,6 +19,7 @@ function App() {
   const [portfolioTotal, setPortfolioTotal] = useState("");
   const [portfolioChange, setPortfolioChange] = useState("");
   const [calories, setCalories] = useState(0);
+  const [actionCount, setActionCount] = useState(0);
 
   const baseURL = "http://localhost:3080";
 
@@ -127,6 +129,23 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const fetchDailyTrackerData = async () => {
+      const dailytrackerURL = "http://100.111.121.51:8082/actions/dailycount";
+
+      await fetch(dailytrackerURL)
+        .then((res) => res.text())
+        .then((result) => {
+          console.log(result);
+          setActionCount(parseInt(result));
+        });
+    };
+    const interval = setInterval(() => {
+      fetchDailyTrackerData();
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
     const fetchCalories = async () => {
       const caloriesURL = "http://100.74.152.81:4000/dailyTotal";
 
@@ -177,7 +196,7 @@ function App() {
         </div>
       </div>
       <div className="top-middle-align"></div>
-      <div className="bottom-middle-align">
+      <div className="lower-middle-align">
         {compliment.length !== 0 ? (
           <ComplimentsApp compliment={compliment} />
         ) : (
@@ -191,6 +210,9 @@ function App() {
           ) : (
             <div></div>
           )}
+        </div>
+        <div className="center-align">
+          <DailyTrackerApp actionCount={actionCount} />
         </div>
         <div className="bottom-right-align">
           <CaloriesApp calories={calories} />
