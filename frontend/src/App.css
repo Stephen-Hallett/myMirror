@@ -72,7 +72,7 @@ body{
 }
 
 .bottom-align{
-    height:13%;
+    height:15%;
 }
 
 .top-middle-align{
@@ -81,7 +81,7 @@ body{
 }
 
 .lower-middle-align{
-    height:8%;
+    height:5%;
     position: relative;
 }
 
@@ -202,21 +202,21 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    width:30%;
+    width:40%;
 }
 
 .bottom-middle-align {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    width: 25%;
+    width: 20%;
 }
 
 .bottom-right-align{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    width:30%;
+    width:40%;
 }
 
 .numbers {
